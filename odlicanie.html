@@ -1,0 +1,1371 @@
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Drugie spotkanie ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: "DM Sans", sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at 15% 15%, rgba(150, 25, 70, .30), transparent 35%),
+        radial-gradient(circle at 85% 85%, rgba(90, 20, 80, .35), transparent 35%),
+        linear-gradient(135deg, #090509, #180913, #090509);
+}
+
+/* =========================
+   TŁO
+========================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.orb {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .25;
+    animation: float 10s ease-in-out infinite;
+}
+
+.orb.one {
+    background: #a31352;
+    top: -100px;
+    left: -100px;
+}
+
+.orb.two {
+    background: #63145c;
+    right: -120px;
+    bottom: -100px;
+    animation-delay: -4s;
+}
+
+.orb.three {
+    background: #b92c67;
+    width: 220px;
+    height: 220px;
+    top: 45%;
+    left: 45%;
+    animation-delay: -7s;
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform: translate(0,0) scale(1);
+    }
+
+    50% {
+        transform: translate(40px,-30px) scale(1.12);
+    }
+
+}
+
+/* =========================
+   GWIAZDKI
+========================= */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: .4;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,100% {
+        opacity: .15;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: .9;
+        transform: scale(1.5);
+    }
+
+}
+
+/* =========================
+   GŁÓWNY EKRAN
+========================= */
+
+.screen {
+    position: relative;
+    z-index: 2;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 20px 125px;
+}
+
+.card {
+
+    width: min(900px, 100%);
+
+    padding: 55px 40px;
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 35px;
+
+    background: rgba(20, 8, 16, .66);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.06);
+
+    text-align: center;
+
+    animation: appear 1.2s ease;
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* =========================
+   TEKST
+========================= */
+
+.small-title {
+
+    text-transform: uppercase;
+    letter-spacing: 5px;
+
+    font-size: 12px;
+
+    color: #d79ab4;
+
+    margin-bottom: 18px;
+}
+
+h1 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 8vw, 85px);
+
+    line-height: 1;
+
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: #d65385;
+}
+
+.subtitle {
+
+    max-width: 600px;
+
+    margin: 0 auto 35px;
+
+    color: #cbbbc3;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+.names {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+    margin-bottom: 35px;
+
+    color: #f4dce6;
+}
+
+.names span {
+    color: #d65385;
+}
+
+/* =========================
+   LICZNIK
+========================= */
+
+.countdown {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin: 35px auto;
+
+    max-width: 700px;
+}
+
+.time-box {
+
+    padding: 23px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.055);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    transition: .3s ease;
+}
+
+.time-box:hover {
+
+    transform: translateY(-6px);
+
+    background: rgba(255,255,255,.09);
+}
+
+.number {
+
+    display: block;
+
+    font-size: clamp(28px, 5vw, 48px);
+
+    font-weight: 700;
+
+    color: white;
+}
+
+.label {
+
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #b99ca9;
+}
+
+/* =========================
+   DATA
+========================= */
+
+.date {
+
+    margin-top: 28px;
+
+    color: #dfb1c5;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+/* =========================
+   PRZYCISK
+========================= */
+
+.button {
+
+    margin-top: 30px;
+
+    padding: 14px 25px;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #9e2457, #64133d);
+
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+.button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 30px rgba(166,35,91,.35);
+}
+
+/* =========================
+   PASEK CZASU
+========================= */
+
+.time-progress {
+
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 8;
+
+    padding:
+        14px
+        max(18px, env(safe-area-inset-right))
+        calc(14px + env(safe-area-inset-bottom))
+        max(18px, env(safe-area-inset-left));
+
+    background: rgba(8, 4, 8, .86);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 -10px 35px rgba(0,0,0,.25);
+}
+
+.progress-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    max-width: 900px;
+
+    margin: 0 auto 8px;
+
+    font-size: 11px;
+
+    color: #bda7b0;
+
+    letter-spacing: .5px;
+}
+
+.progress-info strong {
+
+    color: #e3b0c3;
+
+    font-weight: 600;
+}
+
+.progress-track {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    height: 7px;
+
+    margin: auto;
+
+    background: rgba(255,255,255,.08);
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,.05);
+}
+
+.progress-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7e1746,
+            #d65385,
+            #f09bb9
+        );
+
+    box-shadow:
+        0 0 15px rgba(214,83,133,.55);
+
+    transition: width 1s linear;
+}
+
+/* =========================
+   FINAŁ
+========================= */
+
+.final {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 20;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(128,20,69,.35),
+            transparent 55%
+        ),
+        #090509;
+
+    text-align: center;
+}
+
+.final.active {
+
+    display: flex;
+
+    animation: finalAppear 1.5s ease;
+}
+
+@keyframes finalAppear {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+.final-card {
+
+    max-width: 750px;
+
+    animation:
+        finalCard 1.2s ease .3s both;
+}
+
+@keyframes finalCard {
+
+    from {
+        transform: scale(.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+.final-heart {
+
+    font-size: 65px;
+
+    margin-bottom: 25px;
+
+    animation: heartBeat 1.4s infinite;
+}
+
+@keyframes heartBeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+.final h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 8vw, 80px);
+
+    margin-bottom: 20px;
+}
+
+.final h2 span {
+    color: #d65385;
+}
+
+.final p {
+
+    color: #cdbcc5;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+/* =========================
+   KONFETTI
+========================= */
+
+.confetti {
+
+    position: fixed;
+
+    width: 7px;
+    height: 14px;
+
+    top: -20px;
+
+    z-index: 30;
+
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+
+    to {
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 700px) {
+
+    .screen {
+
+        padding:
+            25px
+            15px
+            120px;
+    }
+
+    .card {
+
+        padding: 45px 25px;
+
+        border-radius: 28px;
+    }
+
+    .countdown {
+
+        gap: 9px;
+    }
+
+    .time-box {
+
+        padding: 20px 5px;
+
+        border-radius: 17px;
+    }
+
+    .number {
+
+        font-size: 32px;
+    }
+
+    .subtitle {
+
+        font-size: 15px;
+    }
+
+}
+
+/* =========================
+   TELEFON
+========================= */
+
+@media (max-width: 480px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+    .screen {
+
+        min-height: 100svh;
+
+        padding:
+            20px
+            12px
+            110px;
+    }
+
+    .card {
+
+        width: 100%;
+
+        padding:
+            35px
+            16px;
+
+        border-radius: 24px;
+    }
+
+    .small-title {
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 15px;
+    }
+
+    h1 {
+
+        font-size: 49px;
+
+        line-height: 1.05;
+    }
+
+    .subtitle {
+
+        font-size: 14px;
+
+        line-height: 1.65;
+
+        margin-bottom: 25px;
+    }
+
+    .names {
+
+        font-size: 21px;
+
+        margin-bottom: 25px;
+    }
+
+    .countdown {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 9px;
+
+        margin: 25px auto;
+    }
+
+    .time-box {
+
+        padding: 18px 5px;
+
+        border-radius: 16px;
+    }
+
+    .number {
+
+        font-size: 31px;
+    }
+
+    .label {
+
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .date {
+
+        font-size: 11px;
+
+        letter-spacing: 1.5px;
+
+        margin-top: 20px;
+    }
+
+    .button {
+
+        width: 100%;
+
+        padding: 14px 15px;
+
+        font-size: 13px;
+
+        margin-top: 25px;
+    }
+
+    .time-progress {
+
+        padding-top: 11px;
+        padding-bottom: calc(
+            11px + env(safe-area-inset-bottom)
+        );
+    }
+
+    .progress-info {
+
+        font-size: 9px;
+
+        margin-bottom: 7px;
+    }
+
+    .progress-track {
+
+        height: 6px;
+    }
+
+    .final {
+
+        padding: 20px;
+    }
+
+    .final-heart {
+
+        font-size: 55px;
+    }
+
+    .final h2 {
+
+        font-size: 48px;
+    }
+
+    .final p {
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+}
+
+/* =========================
+   BARDZO MAŁE TELEFONY
+========================= */
+
+@media (max-width: 360px) {
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .card {
+        padding: 30px 13px;
+    }
+
+    .number {
+        font-size: 27px;
+    }
+
+    .names {
+        font-size: 19px;
+    }
+
+}
+
+/* =========================
+   REDUKCJA ANIMACJI
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TŁO -->
+
+<div class="background">
+
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+
+</div>
+
+<div class="stars" id="stars"></div>
+
+
+<!-- GŁÓWNY EKRAN -->
+
+<main class="screen" id="mainScreen">
+
+    <section class="card">
+
+        <div class="small-title">
+            drugie spotkanie
+        </div>
+
+        <h1>
+            Znowu <span>razem</span>
+        </h1>
+
+        <p class="subtitle">
+            Pierwsze spotkanie już za nami.
+            Teraz czas odliczać do kolejnego.
+            Jeszcze trochę i znowu będziemy razem.
+        </p>
+
+        <div class="names">
+            Milenka <span>×</span> Tobiaszek
+        </div>
+
+
+        <!-- LICZNIK -->
+
+        <div class="countdown">
+
+            <div class="time-box">
+
+                <span
+                    class="number"
+                    id="days"
+                >
+                    00
+                </span>
+
+                <span class="label">
+                    dni
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <span
+                    class="number"
+                    id="hours"
+                >
+                    00
+                </span>
+
+                <span class="label">
+                    godzin
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <span
+                    class="number"
+                    id="minutes"
+                >
+                    00
+                </span>
+
+                <span class="label">
+                    minut
+                </span>
+
+            </div>
+
+
+            <div class="time-box">
+
+                <span
+                    class="number"
+                    id="seconds"
+                >
+                    00
+                </span>
+
+                <span class="label">
+                    sekund
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="date">
+            14 PAŹDZIERNIKA 2026
+        </div>
+
+
+        <button
+            class="button"
+            onclick="showMessage()"
+        >
+            ✦ Otwórz małą niespodziankę
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- PASEK POSTĘPU CZASU -->
+
+<div class="time-progress">
+
+    <div class="progress-info">
+
+        <span id="progressText">
+            Czas do spotkania
+        </span>
+
+        <strong id="progressPercent">
+            0%
+        </strong>
+
+    </div>
+
+    <div class="progress-track">
+
+        <div
+            class="progress-fill"
+            id="progressFill"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- FINAŁ -->
+
+<section
+    class="final"
+    id="final"
+>
+
+    <div class="final-card">
+
+        <div class="final-heart">
+            ❤
+        </div>
+
+        <h2>
+            To już <span>dzisiaj</span>
+        </h2>
+
+        <p>
+
+            Czekanie właśnie się skończyło.<br>
+
+            14 października w końcu nadszedł.<br><br>
+
+            Milenka i Tobiaszek
+            znowu razem.
+
+            <br>
+
+            Teraz już tylko
+            cieszyć się tym dniem.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   GWIAZDKI
+========================= */
+
+const stars =
+    document.getElementById("stars");
+
+for (let i = 0; i < 90; i++) {
+
+    const star =
+        document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 4 + "s";
+
+    star.style.animationDuration =
+        2 + Math.random() * 4 + "s";
+
+    stars.appendChild(star);
+}
+
+
+/* =========================
+   DATA SPOTKANIA
+========================= */
+
+const targetDate =
+    new Date("2026-10-14T00:00:00");
+
+
+/*
+   DATA STARTOWA
+
+   Pasek zaczyna odliczać
+   od momentu uruchomienia strony.
+
+   Dzięki temu pasek pokazuje
+   progres od pierwszego otwarcia.
+*/
+
+const startDate =
+    new Date();
+
+
+/* =========================
+   ELEMENTY
+========================= */
+
+const days =
+    document.getElementById("days");
+
+const hours =
+    document.getElementById("hours");
+
+const minutes =
+    document.getElementById("minutes");
+
+const seconds =
+    document.getElementById("seconds");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const progressPercent =
+    document.getElementById("progressPercent");
+
+const progressText =
+    document.getElementById("progressText");
+
+
+/* =========================
+   LICZNIK
+========================= */
+
+function updateCountdown() {
+
+    const now =
+        new Date();
+
+    const difference =
+        targetDate - now;
+
+
+    if (difference <= 0) {
+
+        days.textContent = "00";
+
+        hours.textContent = "00";
+
+        minutes.textContent = "00";
+
+        seconds.textContent = "00";
+
+
+        progressFill.style.width =
+            "100%";
+
+        progressPercent.textContent =
+            "100%";
+
+        progressText.textContent =
+            "Spotkanie już trwa";
+
+
+        showFinal();
+
+        return;
+    }
+
+
+    const d =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+    const h =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
+
+    const m =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
+
+    const s =
+        Math.floor(
+            (difference / 1000) % 60
+        );
+
+
+    days.textContent =
+        String(d).padStart(2, "0");
+
+    hours.textContent =
+        String(h).padStart(2, "0");
+
+    minutes.textContent =
+        String(m).padStart(2, "0");
+
+    seconds.textContent =
+        String(s).padStart(2, "0");
+
+
+    /* =========================
+       PASEK POSTĘPU
+    ========================= */
+
+
+    const totalTime =
+        targetDate - startDate;
+
+    const elapsed =
+        now - startDate;
+
+
+    let progress =
+        (elapsed / totalTime) * 100;
+
+
+    progress =
+        Math.max(
+            0,
+            Math.min(100, progress)
+        );
+
+
+    progressFill.style.width =
+        progress + "%";
+
+    progressPercent.textContent =
+        Math.floor(progress) + "%";
+
+
+    progressText.textContent =
+        "Czas do spotkania";
+
+
+    /*
+       Jeśli chcesz żeby pasek
+       pokazywał bardziej intuicyjnie
+       "ile zostało", zmieniamy tutaj
+    */
+
+}
+
+
+/* =========================
+   URUCHOMIENIE
+========================= */
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+/* =========================
+   PRZYCISK
+========================= */
+
+function showMessage() {
+
+    const button =
+        document.querySelector(".button");
+
+
+    button.innerHTML =
+        "Jeszcze tylko trochę...";
+
+
+    button.style.transform =
+        "scale(.95)";
+
+
+    setTimeout(() => {
+
+        button.innerHTML =
+            "✦ 14 października będzie pięknie";
+
+        button.style.transform =
+            "scale(1)";
+
+    }, 700);
+
+}
+
+
+/* =========================
+   FINAŁ
+========================= */
+
+function showFinal() {
+
+    const final =
+        document.getElementById("final");
+
+
+    if (
+        final.classList.contains("active")
+    ) {
+
+        return;
+
+    }
+
+
+    final.classList.add("active");
+
+    createConfetti();
+
+}
+
+
+/* =========================
+   KONFETTI
+========================= */
+
+function createConfetti() {
+
+    for (let i = 0; i < 120; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+
+        confetti.classList.add(
+            "confetti"
+        );
+
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+
+        confetti.style.animationDuration =
+            3 + Math.random() * 4 + "s";
+
+
+        confetti.style.animationDelay =
+            Math.random() * 2 + "s";
+
+
+        confetti.style.background =
+            `hsl(
+                ${Math.random() * 360},
+                70%,
+                65%
+            )`;
+
+
+        confetti.style.transform =
+            `rotate(
+                ${Math.random() * 360}deg
+            )`;
+
+
+        document.body.appendChild(
+            confetti
+        );
+
+
+        setTimeout(() => {
+
+            confetti.remove();
+
+        }, 8000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
